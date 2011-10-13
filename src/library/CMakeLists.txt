@@ -5,7 +5,7 @@ BRAINVISA_COPY_AND_INSTALL_HEADERS( _headers "" headersTarget )
 add_library( aimstil SHARED ${_sources} )
 add_dependencies( aimstil ${headersTarget} )
 set_property( TARGET aimstil PROPERTY VERSION ${${PROJECT_NAME}_VERSION} )
-target_link_libraries( aimstil ${_libraries} )
+target_link_libraries( aimstil aimsdata )
 
 BRAINVISA_INSTALL( TARGETS aimstil
               DESTINATION lib
