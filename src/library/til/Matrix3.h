@@ -68,7 +68,7 @@ namespace til
   //---------------------------------------------------------------------------
 
   template < typename TStorage >
-  std::ostream & 
+  inline std::ostream & 
   operator<< (std::ostream & os, const matrix<TStorage> & m)
   {
     return m.data();
@@ -101,7 +101,7 @@ namespace til
   public: // constructors & destructor
 
     /// Empty matrix of zeros.
-	  Matrix3() { this->reset(); }
+    Matrix3() { this->reset(); }
 
     /// No initialization.
     Matrix3(NoInit) {}
@@ -123,7 +123,7 @@ namespace til
     // TODO: actually, maybe all we need is a range.
     //row_type row(std::
 
-	  virtual ~Matrix3() {}
+    /*virtual*/ ~Matrix3() {} // Denis: removed virtual to avoid link errors on Mac
 
   public: // set & get
 
@@ -183,7 +183,7 @@ namespace til
   //---------------------------------------------------------------------------
 
   template < typename T >
-  Matrix3<T>
+  inline Matrix3<T>
   operator-(Matrix3<T> const & mat)
   {
     Matrix3<T> res;
@@ -202,7 +202,7 @@ namespace til
   //---------------------------------------------------------------------------
 
   template < typename T1, typename T2 >
-  numeric_array<typename combine<T1,T2>::type,3>
+  inline numeric_array<typename combine<T1,T2>::type,3>
   operator*(const Matrix3<T1> & m, const numeric_array<T2,3> & v)
   {
     numeric_array<typename combine<T1,T2>::type, 3> res;
@@ -237,7 +237,7 @@ namespace til
   //---------------------------------------------------------------------------
 
   template < typename T >
-  std::ostream & 
+  inline std::ostream & 
   operator<< (std::ostream & os, const Matrix3<T> & m)
   {
     for (int i = 0; i < 3; ++i)

@@ -10,3 +10,11 @@ target_link_libraries( aimstil aimsdata )
 BRAINVISA_INSTALL( TARGETS aimstil
               DESTINATION lib
               COMPONENT ${PROJECT_NAME} )
+
+if( DOXYGEN_FOUND )
+  SET(component_name "aimstil")
+  set( DOXYFILE_PREDEFINED "${AIMS_DEFINITIONS}")
+  BRAINVISA_GENERATE_DOXYGEN_DOC( _headers
+                                  INPUT_PREFIX "${CMAKE_BINARY_DIR}/include"
+                                  COMPONENT "${component_name}")
+endif()
