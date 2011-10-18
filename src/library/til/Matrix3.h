@@ -197,7 +197,7 @@ namespace til
 
   //---------------------------------------------------------------------------
 
-  EXPIMP_TEMPLATE template class TIL_API Matrix3<double>;
+  // EXPIMP_TEMPLATE template class TIL_API Matrix3<double>;
 
   //---------------------------------------------------------------------------
 

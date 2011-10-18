@@ -92,7 +92,7 @@ namespace til {
   };
 
 
-  EXPIMP_TEMPLATE template class TIL_API SymMatrix3<double>;
+  // EXPIMP_TEMPLATE template class TIL_API SymMatrix3<double>;
 
 
 //} // namespace linalg
