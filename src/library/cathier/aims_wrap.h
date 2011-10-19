@@ -5,7 +5,7 @@
 /// \file Contains all code related to interfacing with the aims library.
 
 // includes from AIMS
-#include "connectomist/fibertracking/bundles.h"
+#include "aims/io/reader.h"
 #include "aims/io/writer.h"
 #include "aims/mesh/surface.h"
 #include "aims/mesh/texture.h"
@@ -608,7 +608,8 @@ namespace til
     return AimsTimeSurfaceFaceCollection<D,T>(mesh);
   }
   */
-  
+
+  /*
   class BundleLoader : public comist::BundleListener
   {
   public: // typedefs
@@ -653,7 +654,7 @@ namespace til
   
     boost::shared_ptr<Bundle> m_fibers;
   };
-
+  */
 
 
   //////////////////// MESH UTILS ////////////////////////////
