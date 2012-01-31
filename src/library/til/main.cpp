@@ -18,7 +18,7 @@
 #include "til/Box.h"
 #include "til/connectedComponents3D.h"
 #include "til/convert.h"
-#include "til/CTimage.h"
+#include "til/CTImage.h"
 #include "til/eigen3D.h"
 #include "til/GaussianNormalizedCorrelation.h"
 #include "til/if_then_else.h"

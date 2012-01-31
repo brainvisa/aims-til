@@ -30,7 +30,6 @@ HEADERS = \
    til/ConstImageVolumetricIterator.h \
    til/convert.h \
    til/convolution.h \
-   til/CTimage.h \
    til/CTImage.h \
    til/CubicSplineInterpolation.h \
    til/distanceTransform.h \
