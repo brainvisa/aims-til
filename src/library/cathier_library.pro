@@ -105,7 +105,6 @@ HEADERS = \
    til/RegionGrowingPlugin.h \
    til/RF1CubicSpline.h \
    til/rf1.h \
-   til/RF1.h \
    til/RF4Gaussian.h \
    til/rf4.h \
    til/rf4Tools.h \
