@@ -93,7 +93,6 @@ HEADERS = \
    til/Ptr.h \
    til/Range.h \
    til/range_tools.h \
-   til/RawImage.h \
    til/RAWImage.h \
    til/readDICOM.h \
    til/read.h \
