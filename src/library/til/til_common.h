@@ -27,10 +27,10 @@
 #endif
 
 
-#ifdef WIN32
+#if defined( _WIN32 ) && !defined( _GNUC )
 // A definition to export/import objects and declarations, depending on whether
 // these are used inside or outide the library
-#ifdef TIL_EXPORTS
+#ifdef aimstil_EXPORTS
 #define TIL_API  __declspec(dllexport)
 #define EXPIMP_TEMPLATE
 #else

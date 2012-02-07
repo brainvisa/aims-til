@@ -2,7 +2,7 @@
 // inludes from STL
 #include <stdio.h>
 #include <stdlib.h>
-//#include <string.h> // _swab (gcc)
+#include <string.h> // _swab (gcc)
 
 // includes from TIL library
 #include "til/RAWImage.h"
