@@ -609,6 +609,7 @@ namespace til
   }
   */
 
+  // WARNING: BundleLoader has been moved to the roca lib for now.
   /*
   class BundleLoader : public comist::BundleListener
   {
