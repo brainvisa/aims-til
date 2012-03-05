@@ -6,9 +6,10 @@ find_package( brainvisa-cmake REQUIRED )
 BRAINVISA_FIND_PACKAGE( aims-free REQUIRED )
 find_package( Doxygen QUIET )
 
-include_directories( ${AIMS-FREE_INCLUDE_DIRS} )
 set( AIMS-TIL_INCLUDE_DIRS "${@PROJECT_NAME_UPPER@_BINARY_DIR}/include" ${AIMS-FREE_INCLUDE_DIRS} )
 list( REMOVE_DUPLICATES AIMS-TIL_INCLUDE_DIRS )
+
+include( "${AIMS-FREE_USE_FILE}" )
 
 add_subdirectory( src/library )
 add_subdirectory( src/commands )
