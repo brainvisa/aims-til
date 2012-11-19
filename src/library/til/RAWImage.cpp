@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h> // _swab (gcc)
+#include <unistd.h>
 
 // includes from TIL library
 #include "til/RAWImage.h"
