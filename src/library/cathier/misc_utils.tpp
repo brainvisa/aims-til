@@ -1,5 +1,5 @@
 
-#include <math.h>
+#include <cmath>
 
 namespace til
 {
@@ -176,7 +176,7 @@ namespace til
     // TODO: COMPILER_MAINTENANCE : this has to be regularly checked for compilers :(
 #ifdef __GNUC__
     // GNU has its own implementation
-    return isnan(x);
+    return std::isnan(x);
 #else
     // The IEEE-compliant way -- but I guess it is compiler-dependant.
     return x != x;
