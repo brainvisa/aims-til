@@ -336,13 +336,13 @@ namespace til
     }
 
     /// Alike STL container's "empty".
-    bool empty() { return m_size == 0; }
+    bool empty() const { return m_size == 0; }
 
     /// Alike STL container's "erase"
     void erase(const sparse_iterator & i) { m_data.erase(i); }
 
     ///
-    bool is_null()
+    bool is_null() const
     {
       for(typename Map::const_iterator i = m_data.begin(); i != m_data.end(); ++i)
       {
