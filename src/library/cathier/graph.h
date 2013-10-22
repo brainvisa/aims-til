@@ -111,7 +111,7 @@ namespace til
   {
   private: // data
     TAttribute m_attribute;
-    std::list<Edge> m_edges;
+    // std::list<Edge> m_edges; // Edge is undeclared anyway
   };
 
   //---------------------------------------------------------------------------
