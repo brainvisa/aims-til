@@ -211,6 +211,18 @@ namespace til
 
     //--------------------------------------------------------------------------
 
+    template < typename T, std::size_t D >
+    class numeric_array_impl<T,D>::iterator
+      : public basic_iterator<T>
+    {
+    public: // typedefs
+      typedef basic_iterator<T> Base;
+    public: // constructors & destructor
+      iterator() : Base() {}
+      iterator(T* p) : Base(p) {}
+    };
+
+    //--------------------------------------------------------------------------
 
     template < typename T, std::size_t D >
     class numeric_array_impl<T,D>::const_iterator
@@ -222,21 +234,6 @@ namespace til
       const_iterator() : Base() {}
       const_iterator(const T * p) : Base(p) {}
       const_iterator(iterator i) : Base(i) {}
-    };
-
-
-    //--------------------------------------------------------------------------
-
-
-    template < typename T, std::size_t D >
-    class numeric_array_impl<T,D>::iterator
-      : public basic_iterator<T>
-    {
-    public: // typedefs
-      typedef basic_iterator<T> Base;
-    public: // constructors & destructor
-      iterator() : Base() {}
-      iterator(T* p) : Base(p) {}
     };
 
     //-------------------------------------------------------------------------
