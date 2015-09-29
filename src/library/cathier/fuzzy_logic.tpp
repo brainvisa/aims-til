@@ -7,7 +7,7 @@ namespace til { namespace fuzzy
   template < typename T >
   inline
   boost::logic::tribool
-  is_positive(T x, T delta = 128*std::numeric_limits<T>::epsilon())
+  is_positive(T x, T delta)
   {
     assert(delta >= 0);
     if (x >= delta) return true;
@@ -21,7 +21,7 @@ namespace til { namespace fuzzy
   template < typename T >
   inline 
   boost::logic::tribool
-  same_sign(T x, T y, T delta = 128*std::numeric_limits<T>::epsilon())
+  same_sign(T x, T y, T delta)
   {
     // NB: I am not sure that this solution is actually much worse than what could be
     // achieved by explicit checking, regarding the number of tests to make.
