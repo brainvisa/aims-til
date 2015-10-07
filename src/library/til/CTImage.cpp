@@ -255,7 +255,7 @@ TIL_API unsigned char *readCTImage8( char *filename, int *xs, int *ys, int *zs,
         exit( -1 );
     }
 
-    imgPtr = (unsigned char *)malloc( *xs **ys **zs * sizeof(char) );
+    imgPtr = (unsigned char *)malloc( *xs **ys **zs * sizeof(unsigned char) );
     if ( !imgPtr )
     {
         fprintf( stderr, "Memory allocation failed\n" );
@@ -302,7 +302,7 @@ TIL_API unsigned char *readCTImage8ByNumber( FILE *fp, int slice, int xs, int ys
     fseek( fp, 0L, SEEK_SET );
     fseek( fp, (long)slice * xs * ys * sizeof(char) + 8L, SEEK_SET );
 
-    imgPtr = (unsigned char *)malloc( xs * ys * sizeof(char) );
+    imgPtr = (unsigned char *)malloc( xs * ys * sizeof(unsigned char) );
 
     if ( !imgPtr )
     {
@@ -322,7 +322,7 @@ TIL_API unsigned char *readCTImage8Sequentially( FILE *fp, int xs, int ys )
     unsigned char *imgPtr;
     int numgot;
 
-    imgPtr = (unsigned char *)malloc( xs * ys * sizeof(char) );
+    imgPtr = (unsigned char *)malloc( xs * ys * sizeof(unsigned char) );
 
     if ( !imgPtr )
     {
@@ -418,7 +418,7 @@ TIL_API unsigned int *readCTImage32ByNumber( FILE *fp, int slice, int xs, int ys
     fseek( fp, 0L, SEEK_SET );
     fseek( fp, (long)slice * xs * ys * sizeof(int) + 8L, SEEK_SET );
 
-    imgPtr = (unsigned int *)malloc( xs * ys * sizeof(int) );
+    imgPtr = (unsigned int *)malloc( xs * ys * sizeof(unsigned int) );
 
     if ( !imgPtr )
     {
@@ -437,7 +437,7 @@ TIL_API unsigned int *readCTImage32Sequentially( FILE *fp, int xs, int ys )
     unsigned int *imgPtr;
     int numgot;
 
-    imgPtr = (unsigned int *)malloc( xs * ys * sizeof(int) );
+    imgPtr = (unsigned int *)malloc( xs * ys * sizeof(unsigned int) );
 
     if ( !imgPtr )
     {
@@ -928,7 +928,7 @@ TIL_API int writeCTImage16( char *filename, unsigned short *sPtr, int xs, int ys
         exit( 0 );
     }
 
-    tmpPtr = (unsigned short *)malloc( xs * ys * zs * sizeof(short) );
+    tmpPtr = (unsigned short *)malloc( xs * ys * zs * sizeof(unsigned short) );
     if ( !tmpPtr )
     {
         fprintf( stderr, "Memory allocation failed\n" );
@@ -965,7 +965,7 @@ TIL_API int writeCTImage16Sequentially( FILE *fp, unsigned short *sPtr, int xs, 
     unsigned short *tmpPtr;
     int rv;
 
-    tmpPtr = (unsigned short *)malloc( xs * ys * sizeof(short) );
+    tmpPtr = (unsigned short *)malloc( xs * ys * sizeof(unsigned short) );
     if ( !tmpPtr )
     {
         fprintf( stderr, "Memory allocation failed\n" );
