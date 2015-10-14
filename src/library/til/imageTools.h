@@ -307,8 +307,9 @@ void deduceImageSizeFromGaussianStandardDeviation(T1 sigma, const TImage2 &im, i
 template < typename TImage >
 void getLocalHessian(const TImage &im, SymMatrix3<typename TImage::value_type> &mat, int x, int y, int z)
 {
-	
-	if (!contains(getRange(im), Range<int,3>(x-1, y-1, z-1, x+1, y+1, z+1)))
+	if (!contains(getRange(im),
+                      Range<int,3>(numeric_array<int, 3>(x-1, y-1, z-1),
+                                   numeric_array<int, 3>(x+1, y+1, z+1))))
 	{
 		throw std::invalid_argument("Point is outside image or on image border");
 	}

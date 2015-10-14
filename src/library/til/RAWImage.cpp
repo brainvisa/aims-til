@@ -214,7 +214,7 @@ unsigned char *readRawImage8( char *filename, int xs, int ys, int zs )
         exit( 0 );
     }
 
-    imgPtr = (unsigned char *)malloc( xs *ys *zs * sizeof(char) );
+    imgPtr = (unsigned char *)malloc( xs *ys *zs * sizeof(unsigned char) );
     if ( !imgPtr )
     {
         fprintf( stderr, "Memory allocation failed\n" );
@@ -242,7 +242,7 @@ unsigned char *readRawImage8ByNumber( FILE *fp, int slice, int xs, int ys )
     fseek( fp, 0L, SEEK_SET );
     fseek( fp, (long)slice * xs * ys * sizeof(char), SEEK_SET );
 
-    imgPtr = (unsigned char *)malloc( xs * ys * sizeof(char));
+    imgPtr = (unsigned char *)malloc( xs * ys * sizeof(unsigned char));
 
     if ( !imgPtr )
     {
@@ -261,7 +261,7 @@ unsigned char *readRawImage8Sequentially( FILE *fp, int xs, int ys )
     unsigned char *imgPtr;
     int numgot;
 
-    imgPtr = (unsigned char *)malloc( xs * ys * sizeof(char));
+    imgPtr = (unsigned char *)malloc( xs * ys * sizeof(unsigned char));
 
     if ( !imgPtr )
     {
@@ -316,7 +316,7 @@ int writeRawImage16BO( char *filename, unsigned short *sPtr,
 
 	if ( bpp < 0 )
 	{
-       tmpPtr = (unsigned short *)malloc( xs * ys * zs * sizeof(short) );
+       tmpPtr = (unsigned short *)malloc( xs * ys * zs * sizeof(unsigned short) );
 
        if ( !tmpPtr )
 	   {
@@ -351,7 +351,7 @@ int writeRawImage16SequentiallyBO( FILE *fp, unsigned short *sPtr,
 	}
 	else
 	{
-       tmpPtr = (unsigned short *)malloc( xs * ys * sizeof(short) );
+       tmpPtr = (unsigned short *)malloc( xs * ys * sizeof(unsigned short) );
 
        if ( !tmpPtr )
 	   {
