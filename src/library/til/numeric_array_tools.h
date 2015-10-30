@@ -18,7 +18,7 @@ namespace til
 #ifndef NDEBUG
   newSize
 #endif
-   )
+  ) __attribute__((__deprecated__))
   {
     assert(newSize == D);
   }

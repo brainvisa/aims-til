@@ -296,6 +296,7 @@ namespace til
   // TODO: change this: remove res = T()
   template < typename TRes, typename TCollection >
   void centroid(const TCollection & c, TRes & res)
+    __attribute__((__deprecated__("use mean() instead")))
   {
     mean(c.begin(), c.end(), res);
   }
