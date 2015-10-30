@@ -297,7 +297,7 @@ namespace til
       points.push_back(B);
       points.push_back(C);
       
-      boost::array<std::size_t,3> face = { points.size()-1, points.size()-2, points.size()-3 };
+      boost::array<std::size_t,3> face = { { points.size()-1, points.size()-2, points.size()-3 } };
       faces.push_back(face);
     }
     
@@ -355,7 +355,7 @@ namespace til
       for (std::size_t it = 0; it < tmp.size(); ++it)
       {
         //std::cout << "Adding face " << i << " " << tmp[it].index << " " << tmp[ (it+1) % size(tmp) ].index << std::endl;
-        Face face = {i, tmp[it].index, tmp[ (it+1) % tmp.size() ].index };
+        Face face = { {i, tmp[it].index, tmp[ (it+1) % tmp.size() ].index } };
         faces.push_back(face);
       }
     }
@@ -491,7 +491,7 @@ namespace til
           std::size_t delta = std::abs(int((*f)[i]) - int((*f)[(i+1)%3]));
           if (delta == 1 || delta == (n-1))
           {
-            boost::array<std::size_t,2> tmp = {min((*f)[i], (*f)[(i+1)%3]), max((*f)[i], (*f)[(i+1)%3])};
+            boost::array<std::size_t,2> tmp = { {min((*f)[i], (*f)[(i+1)%3]), max((*f)[i], (*f)[(i+1)%3])} };
             outer_edges.insert(tmp);
           }
         }
@@ -725,7 +725,7 @@ namespace til
       // For three neighbors, simply add the only triangle possible
       else if (nneigh == 3)
       {
-        boost::array<std::size_t,3> tmp = {0,1,2};
+        boost::array<std::size_t,3> tmp = { {0,1,2} };
         m_tri.push_back(tmp);
       }
       // For two points or less, do not add any face. Note that if this happens, it means that the mesh
@@ -1220,7 +1220,7 @@ namespace til
         // For three neighbors, simply add the only triangle possible
         else if (m_neighbors.size() == 3)
         {
-          boost::array<std::size_t,3> tmp = {0,1,2};
+          boost::array<std::size_t,3> tmp = { {0,1,2} };
           m_tri.push_back(tmp);
         }
         // For two points or less, do not add any face. Note that if this happens, it means that the mesh

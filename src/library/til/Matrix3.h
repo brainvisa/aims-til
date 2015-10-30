@@ -129,7 +129,7 @@ namespace til
 
     boost::array<std::size_t,2> dims() const
     {
-      boost::array<std::size_t,2> d = {3,3};
+      boost::array<std::size_t,2> d = { {3, 3} };
       return d;
     }
 
