@@ -14,11 +14,15 @@ namespace til
   // won't affect a.size()...
   //TODO: I think this crap is completely obsolete, right? I hope so.
   template < typename T, std::size_t D >
+  inline void resize(numeric_array<T,D> &, std::size_t newSize)
+    __attribute__((__deprecated__));
+
+  template < typename T, std::size_t D >
   inline void resize(numeric_array<T,D> &, std::size_t
 #ifndef NDEBUG
   newSize
 #endif
-   )
+  )
   {
     assert(newSize == D);
   }

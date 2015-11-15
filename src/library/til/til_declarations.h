@@ -24,7 +24,7 @@ namespace til
   template < typename T, typename TAccumulation >
                                              class MeanAccumulator;
 	template < typename TParam >               class Mesh;
-  template < class TMesh >                   class MeshAttributes;
+  template < class TMesh >                   struct MeshAttributes;
   template < typename TParam >               class MeshFaceCollection;
   template < typename T, std::size_t N >     class NaryTree;
   template < typename T, std::size_t D >     class numeric_array;

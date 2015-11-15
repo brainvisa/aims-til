@@ -80,7 +80,6 @@ namespace til
   whole_range(const std::vector<T,TAlloc> & v)
   { return typename const_range_of<std::vector<T,TAlloc> >::type (v.begin(), v.end()); }
 
-
   // range for std::list
   template < typename T, typename TAlloc >
   struct range_of<std::list<T,TAlloc> >
