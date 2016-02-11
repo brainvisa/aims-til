@@ -34,7 +34,7 @@ void removingPointsWithHighCurvature(int argc, char * argv[])
   std::size_t n =  getVertices(mesh).size();
 
   std::cout << "Get circular neighbor..." << std::flush;
-  shared_ptr<std::vector<std::vector<std::size_t> > > neighc = circular_neighborhoods(getVertices(mesh), getFaceIndices(mesh));
+  boost::shared_ptr<std::vector<std::vector<std::size_t> > > neighc = circular_neighborhoods(getVertices(mesh), getFaceIndices(mesh));
   std::cout << "OK" << std::endl;
 
   std::cout << "Converting into graph..." << std::flush;
