@@ -9,7 +9,6 @@
 #include <boost/array.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/type_traits.hpp>
-using boost::shared_ptr;
 
 // includes from TIL
 //#include "til/Point.h"
@@ -27,6 +26,7 @@ using boost::shared_ptr;
 
 namespace til
 {
+  using boost::shared_ptr;
 
   /// A class to represent a very basic mesh, consisting of a set of vertices
   /// and a set of edges, represented as vertex indices.
