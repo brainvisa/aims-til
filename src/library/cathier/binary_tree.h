@@ -52,32 +52,30 @@ namespace til
   
     template < typename X > class iterator_base;
     class Node;
-    struct Destructor { void operator()(iterator i) const { delete &*i; } };
-    
+    struct Destructor;
+
   public: // constructors & destructor ----------------------------------------
-  
+
     /// Default constructor builds an emtpy tree.
     NaryTree() : m_root(), m_size() {}
-    
+
     /// Destructor
     ~NaryTree();
-  
+
   public: // set & get --------------------------------------------------------
-  
+
     std::size_t size() const { return m_size; }
-    
+
   public: // functions --------------------------------------------------------
-  
+
     /// Return a const iterator on the root element of the tree.
     const_iterator
-    root() const
-    { return const_iterator(m_root); }
-  
+    root() const;
+
     /// Return a non_const iterator on the root element of the tree.
     iterator 
-    root()
-    { return iterator(m_root, 0, 0); }
-    
+    root();
+
     /// Add a child to a node.
     iterator 
     addChild
@@ -86,7 +84,7 @@ namespace til
     , std::size_t childNumber
     , T value = T()
     );
-  
+
     /// Add a child to a node.
     iterator
     addChild
@@ -94,11 +92,10 @@ namespace til
       iterator & parent
     , std::size_t childNumber
     , T value = T()
-    )
-    { return this->addChild(parent.node(), childNumber, value); }
-       
+    );
+
   private: // data ------------------------------------------------------------
-    
+
     Node * m_root;  
     std::size_t m_size;
   };
@@ -313,6 +310,39 @@ namespace til
   std::size_t
   size(const NaryTree<T,N> & ntree) { return ntree.size(); }
   
+
+  //---------------------------------------------------------------------------
+
+    //-----------------------------//
+   //  inline methods and structs //
+  //-----------------------------//
+
+  template < typename T, std::size_t N >
+  struct NaryTree<T, N>::Destructor
+  {
+    void operator()(iterator i) const { delete &*i; }
+  };
+
+  template < typename T, std::size_t N >
+  inline typename NaryTree<T, N>::const_iterator
+  NaryTree<T, N>::root() const
+  { return const_iterator(m_root); }
+
+  template < typename T, std::size_t N >
+  inline typename NaryTree<T, N>::iterator
+  NaryTree<T, N>::root()
+  { return iterator(m_root, 0, 0); }
+
+  template < typename T, std::size_t N >
+  inline typename NaryTree<T, N>::iterator
+  NaryTree<T, N>::addChild
+  (
+    iterator & parent
+  , std::size_t childNumber
+  , T value
+  )
+  { return this->addChild(parent.node(), childNumber, value); }
+
 
   //---------------------------------------------------------------------------
   
