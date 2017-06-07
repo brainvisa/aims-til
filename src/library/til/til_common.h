@@ -60,7 +60,9 @@
 
 // Signal windows.h not to define 'min' and 'max' macros. This should helfully tackle the 
 // belowmentionned problem.
-#define NOMINMAX
+#ifndef NOMINMAX
+#define NOMINMAX 1
+#endif
 /*
 // Undefine 'min' and 'max' macros, 
 // defined in one of the windows include files
