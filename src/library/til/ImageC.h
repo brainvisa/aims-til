@@ -2,6 +2,7 @@
 #define TIL_IMAGEC_H
 
 // Includes from STL
+#include <cstring>
 #include <iostream>
 #include <limits>
 #include <stdexcept>
