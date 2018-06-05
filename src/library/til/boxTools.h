@@ -47,7 +47,7 @@ namespace til
   template < typename T, std::size_t D >
   std::ostream& operator<<(std::ostream& os, const Box<T,D> &box)
   {
-	  return os << "(" __ box.min_bounds()  __ "," __ box.max_bounds() << " )" << std::endl;
+	  return os << "(" <<" "<< box.min_bounds()  <<" "<< "," <<" "<< box.max_bounds() << " )" << std::endl;
   }
 
 

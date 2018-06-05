@@ -53,12 +53,12 @@ template < typename T >
 void print(RF4<T> rf4)
 {
 	std::cout << "Forward Filter:" << std::endl;
-	std::cout << rf4.getMIF()[0] __ rf4.getMIF()[1] __ rf4.getMIF()[2] __ rf4.getMIF()[3] << std::endl;
-	std::cout << rf4.getMOF()[0] __ rf4.getMOF()[1] __ rf4.getMOF()[2] __ rf4.getMOF()[3] << std::endl;
+	std::cout << rf4.getMIF()[0] <<" "<< rf4.getMIF()[1] <<" "<< rf4.getMIF()[2] <<" "<< rf4.getMIF()[3] << std::endl;
+	std::cout << rf4.getMOF()[0] <<" "<< rf4.getMOF()[1] <<" "<< rf4.getMOF()[2] <<" "<< rf4.getMOF()[3] << std::endl;
 
 	std::cout << "Backward Filter:" << std::endl;
-	std::cout << rf4.getMIB()[0] __ rf4.getMIB()[1] __ rf4.getMIB()[2] __ rf4.getMIB()[3] << std::endl;
-	std::cout << rf4.getMOB()[0] __ rf4.getMOB()[1] __ rf4.getMOB()[2] __ rf4.getMOB()[3] << std::endl;
+	std::cout << rf4.getMIB()[0] <<" "<< rf4.getMIB()[1] <<" "<< rf4.getMIB()[2] <<" "<< rf4.getMIB()[3] << std::endl;
+	std::cout << rf4.getMOB()[0] <<" "<< rf4.getMOB()[1] <<" "<< rf4.getMOB()[2] <<" "<< rf4.getMOB()[3] << std::endl;
 
 }
 */

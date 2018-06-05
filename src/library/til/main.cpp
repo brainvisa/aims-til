@@ -424,7 +424,7 @@ void detectDiscsInVolumeCutsFromBorder
 			{
 				if ((norm = abs(nx)+abs(ny)+abs(nz)) != 0)
 				{
-					std::cout << '(' __ nx __ ',' __ ny __ ',' __ nz __ ')' << std::endl;
+					std::cout << '(' <<" "<< nx <<" "<< ',' <<" "<< ny <<" "<< ',' <<" "<< nz <<" "<< ')' << std::endl;
 
 					copy(seg, temp);
 					

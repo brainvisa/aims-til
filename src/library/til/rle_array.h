@@ -236,7 +236,7 @@ namespace til
 
       void print()
       {
-        std::cout << "Pointing on " << m_valueProxy.index().first->value() __ m_valueProxy.index().first->length() << std::endl;
+        std::cout << "Pointing on " << m_valueProxy.index().first->value() <<" "<< m_valueProxy.index().first->length() << std::endl;
         std::cout << "Local pos: " << m_valueProxy.index().second << std::endl;
         std::cout << "Absolute pos: " << m_i << std::endl;
       }
