@@ -274,7 +274,7 @@ namespace til
     template < typename TVector3D >
     struct Normalize
     {
-      void operator()(const TVector3D &v1, const TVector3D &v2, TVector3D & res)
+      void operator()(const TVector3D &v1, const TVector3D &v2, TVector3D & res) const
       {
         sub(v1, v2, res);
         div(res, norm(res));
@@ -344,7 +344,7 @@ namespace til
   template < typename T >
   struct Lexicographical_compare
   {
-    bool operator()(const T & x, const T & y)
+    bool operator()(const T & x, const T & y) const
     { return std::lexicographical_compare(x.begin(), x.end(), y.begin(), y.end()); }
   };
 
@@ -367,7 +367,7 @@ namespace til
   template < typename TIterator >
   struct Lesser_PointeeAddress
   {
-    bool operator()(TIterator i, TIterator j)
+    bool operator()(TIterator i, TIterator j) const
     { return &*i < &*j; }
   };
 
@@ -377,7 +377,7 @@ namespace til
   template < typename T1, typename T2 >
   struct Lesser_Pair2
   {
-    bool operator()(const std::pair<T1,T2> & p1, const std::pair<T1,T2> & p2)
+    bool operator()(const std::pair<T1,T2> & p1, const std::pair<T1,T2> & p2) const
     { return p1.second < p2.second; }
   };
   
@@ -387,7 +387,7 @@ namespace til
   template < typename T1, typename T2 >
   struct Greater_Pair2
   {
-    bool operator()(const std::pair<T1,T2> & p1, const std::pair<T1,T2> & p2)
+    bool operator()(const std::pair<T1,T2> & p1, const std::pair<T1,T2> & p2) const
     { return p1.second > p2.second; }
   };
   
@@ -397,12 +397,12 @@ namespace til
   template < typename T1, typename T2 >
   struct Return_pair1
   {
-    inline T1 operator()(std::pair<T1, T2> const & p) { return p.first; }
+    inline T1 operator()(std::pair<T1, T2> const & p) const { return p.first; }
   };
     
   //-----------------------------------------------------------------
 
-  /// Returns i0, where X_i0 is the greatest of all Xi's.
+  /// Returns i0, where X_i0 is the greatesstructt of all Xi's.
   template < typename T >
   inline std::size_t max_index(T x0, T x1, T x2);
 
@@ -424,7 +424,7 @@ namespace til
   struct SquaredEuclideanDist
   {
     template < typename T, std::size_t D >
-    TPrec operator()(const numeric_array<T,D> & a1, const numeric_array<T,D> & a2)
+    TPrec operator() (const numeric_array<T,D> & a1, const numeric_array<T,D> & a2) const
     {
       return dist2(a1, a2, prec<TPrec>());
     }
