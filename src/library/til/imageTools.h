@@ -122,8 +122,8 @@ template < class TImage >
 void printInfo(const TImage &im)
 {
 	std::cout << "Image Type : " << typeid(typename TImage::value_type).name() << std::endl;
-	std::cout << "Image Size : " << im.dim()[0] __ im.dim()[1] __ im.dim()[2] << std::endl;
-	std::cout << "Image Voxel Size : " << im.vdim()[0] __ im.vdim()[1] __ im.vdim()[2] << std::endl;
+	std::cout << "Image Size : " << im.dim()[0] <<" "<< im.dim()[1] <<" "<< im.dim()[2] << std::endl;
+	std::cout << "Image Voxel Size : " << im.vdim()[0] <<" "<< im.vdim()[1] <<" "<< im.vdim()[2] << std::endl;
 }
 
 

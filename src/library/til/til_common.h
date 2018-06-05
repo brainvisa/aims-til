@@ -53,11 +53,6 @@
 // TODO: rename into TIL_EXPAND_VECTOR3D
 #define EXPAND_VECTOR(v) v[0], v[1], v[2]
 
-
-
-/// Convenient macro used in cout lines to separate two numbers
-#define __ <<" "<<
-
 // Signal windows.h not to define 'min' and 'max' macros. This should helfully tackle the 
 // belowmentionned problem.
 #ifndef NOMINMAX

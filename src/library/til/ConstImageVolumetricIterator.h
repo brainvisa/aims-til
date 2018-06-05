@@ -413,7 +413,7 @@ namespace til {
 	  std::cout << "Pointer: " << it.m_index << std::endl;
 	  std::cout << "Position: " << it.m_pos << std::endl;
 	  std::cout << "Offset: " << it.m_offset << std::endl;
-	  std::cout << "Range: " << it.m_roi.min_bounds() __ it.m_roi.max_bounds() << std::endl;	
+	  std::cout << "Range: " << it.m_roi.min_bounds() <<" "<< it.m_roi.max_bounds() << std::endl;
   }
 
 } // namespace til

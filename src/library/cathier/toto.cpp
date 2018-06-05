@@ -229,13 +229,13 @@ void testConnectivityMatrix(int argc, char * argv[])
   std::cout << "Printing neighbors of " << n << std::endl;
   for (int i = 0; i < mat.ncols(); ++i)
   {
-    if (mat(n,i)) std::cout << i << "(" << mat(n,i) << ")"__ std::flush;
+    if (mat(n,i)) std::cout << i << "(" << mat(n,i) << ")"<<" "<< std::flush;
   }
   std::cout << std::endl;
   std::cout << "Printing neighbors (2) of " << n << std::endl;
   for (int i = 0; i < mat.ncols(); ++i)
   {
-    if (mat(i,n)) std::cout << i << "(" << mat(i,n) << ")"__ std::flush;
+    if (mat(i,n)) std::cout << i << "(" << mat(i,n) << ")"<<" "<< std::flush;
   }
   std::cout << std::endl;
 

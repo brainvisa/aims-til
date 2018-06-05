@@ -274,9 +274,9 @@ public:
 		iIm.set_pos(numeric_array<int,3>(i2, j2, k2));
 		
 		/*
-		std::cout << "i" __ i1 __ i2 __ i3 __ i4 << std::endl;
-		std::cout << "j" __ j1 __ j2 __ j3 __ j4 << std::endl;
-		std::cout << "k" __ k1 __ k2 __ k3 __ k4 << std::endl;
+		std::cout << "i" <<" "<< i1 <<" "<< i2 <<" "<< i3 <<" "<< i4 << std::endl;
+		std::cout << "j" <<" "<< j1 <<" "<< j2 <<" "<< j3 <<" "<< j4 << std::endl;
+		std::cout << "k" <<" "<< k1 <<" "<< k2 <<" "<< k3 <<" "<< k4 << std::endl;
 */
 /*		if (contains(getRange(im), Range(i1, j1, k1, i4, j4, k4)))
 		{
@@ -702,9 +702,9 @@ public:
 
 		
 		/*
-		std::cout << "i" __ i1 __ i2 __ i3 __ i4 << std::endl;
-		std::cout << "j" __ j1 __ j2 __ j3 __ j4 << std::endl;
-		std::cout << "k" __ k1 __ k2 __ k3 __ k4 << std::endl;
+		std::cout << "i" <<" "<< i1 <<" "<< i2 <<" "<< i3 <<" "<< i4 << std::endl;
+		std::cout << "j" <<" "<< j1 <<" "<< j2 <<" "<< j3 <<" "<< j4 << std::endl;
+		std::cout << "k" <<" "<< k1 <<" "<< k2 <<" "<< k3 <<" "<< k4 << std::endl;
 */
 /*		if (contains(getRange(im), Range(i1, j1, k1, i4, j4, k4)))
 		{

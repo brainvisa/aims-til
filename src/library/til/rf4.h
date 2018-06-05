@@ -373,7 +373,7 @@ private: // methods
 	void formula2filter(T a0, T a1, T c0, T c1, T w0, T w1, T b0, T b1, T sigma, T mi[4], T mo[4])
 	{
 		//std::cout << "FORMULA2FILTER" << std::endl;
-		//std::cout << "ABC " << a0 __ a1 __ c0 __ c1 __ w0 __ w1 __ b0 __ b1 << std::endl;
+		//std::cout << "ABC " << a0 <<" "<< a1 <<" "<< c0 <<" "<< c1 <<" "<< w0 <<" "<< w1 <<" "<< b0 <<" "<< b1 << std::endl;
 
 		// Standard shortcuts variables
 		
@@ -391,7 +391,7 @@ private: // methods
 		T eb02b1 = exp(-(b0+2.0*b1)/sigma);
 		
 
-		//std::cout << "CW " << cw0 __ cw1 __ sw0 __ sw1 __ eb0 __ eb1 __ e2b0 __ e2b1 __ eb0b1 __ e2b0b1 __ eb02b1 << std::endl;
+		//std::cout << "CW " << cw0 <<" "<< cw1 <<" "<< sw0 <<" "<< sw1 <<" "<< eb0 <<" "<< eb1 <<" "<< e2b0 <<" "<< e2b1 <<" "<< eb0b1 <<" "<< e2b0b1 <<" "<< eb02b1 << std::endl;
 
 		// Deduce iterative coefficients from previous filter
 		
@@ -417,8 +417,8 @@ private: // methods
 		mo[3] = exp(-2.0*(b0+b1)/sigma);
 
 			
-		//std::cout << mi[0] __ mi[1] __ mi[2] __ mi[3] << std::endl;
-		//std::cout << mo[0] __ mo[1] __ mo[2] __ mo[3] << std::endl;
+		//std::cout << mi[0] <<" "<< mi[1] <<" "<< mi[2] <<" "<< mi[3] << std::endl;
+		//std::cout << mo[0] <<" "<< mo[1] <<" "<< mo[2] <<" "<< mo[3] << std::endl;
 
 	}
 
