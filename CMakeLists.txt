@@ -3,6 +3,8 @@ BRAINVISA_PROJECT()
 
 find_package( brainvisa-cmake REQUIRED )
 
+BRAINVISA_DEPENDENCY( DEV DEPENDS "${PROJECT_NAME}" RUN "= ${${PROJECT_NAME}_VERSION}" )
+
 BRAINVISA_FIND_PACKAGE( aims-free REQUIRED )
 find_package( Doxygen QUIET )
 
