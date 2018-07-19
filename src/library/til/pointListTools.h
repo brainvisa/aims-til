@@ -1,6 +1,8 @@
 #ifndef TIL_POINTLISTTOOLS_H
 #define TIL_POINTLISTTOOLS_H
 
+#include <cartobase/config/cartobase_config.h>
+
 // Includes from STL
 #include <memory>
 #include <vector>
@@ -97,7 +99,11 @@ void dumpPointListInImage(const std::vector<numeric_array<int,3> > &pl, const Pt
 
 // TODO: that's not worth a function, coz there is probably a grep out there...
 template < class TImage1, class TImage2>
+#if __cplusplus >= 201103L
+std::unique_ptr<std::vector<numeric_array<int,3> > >
+#else
 std::auto_ptr<std::vector<numeric_array<int,3> > >
+#endif
 keepPointsAboveThreshold
 (
   const std::vector<numeric_array<int,3> > &pl,
@@ -108,8 +114,11 @@ keepPointsAboveThreshold
 )
 {
 
+#if __cplusplus >= 201103L
+	std::unique_ptr<std::vector<numeric_array<int,3> > > newPl = new std::vector<numeric_array<int,3> >;
+#else
 	std::auto_ptr<std::vector<numeric_array<int,3> > > newPl = new std::vector<numeric_array<int,3> >;
-
+#endif
 	std::vector<numeric_array<int,3> >::const_iterator iPl;
 
 	for (iPl = pl.begin(); iPl != pl.end(); ++iPl)

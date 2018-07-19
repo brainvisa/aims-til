@@ -1,6 +1,8 @@
 #ifndef TIL_MORPHO_H
 #define TIL_MORPHO_H
 
+#include <cartobase/config/cartobase_config.h>
+
 // includes from STL library
 #include <memory>
 #include <vector>
@@ -17,7 +19,11 @@ namespace til
 /// This has to be rewritten (first, to template with neighborhood, and then,
 /// because we probably don't need a function for this).
 template < typename TImage >
+#if __cplusplus >= 201103L
+std::unique_ptr<std::vector<numeric_array<int,3> > >
+#else
 std::auto_ptr<std::vector<numeric_array<int,3> > >
+#endif
 findBorderPoints6(const ConstPtr<TImage> &im,
 				  typename TImage::value_type foreground)
 {
