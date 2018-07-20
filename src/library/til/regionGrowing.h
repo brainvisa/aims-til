@@ -200,22 +200,14 @@ INLINE void _addPoint2
 // of some policy.
 
 template < class TImage, class Ghost >
-#if __cplusplus >= 201103L
 std::unique_ptr<VoxelList>                                    ///< New boundary points
-#else
-std::auto_ptr<VoxelList>                                    ///< New boundary points
-#endif
 addNeighbors(TImage &seg,                                     ///< Segmentation image
              const std::vector<numeric_array<int,3> > &vl,    ///< Boundary points
              const std::vector<numeric_array<int,3> > &vnh,   ///< Neighborhood
              Ghost &ghost,                                    ///< Region growing criteria
              typename TImage::value_type newColor)            ///< New color
 {
-#if __cplusplus >= 201103L
 	std::unique_ptr<VoxelList> newVl(new VoxelList);
-#else
-	std::auto_ptr<VoxelList> newVl(new VoxelList);
-#endif
 	// A factor of 3 is usually more than enough
 	newVl->reserve(3 * vl.size());
 	VoxelList::const_iterator iVl;
@@ -255,11 +247,7 @@ if (nh.template isNeighbor<(i),(j),(k)>() && containsNeighbor<(i),(j),(k)>(iSeg)
 
 
 template < class TImage, class Ghost, class TNeighborhood >
-#if __cplusplus >= 201103L
 std::unique_ptr<VoxelList>
-#else
-std::auto_ptr<VoxelList>
-#endif
 addNeighbors2
 (
   TImage & seg,
@@ -269,11 +257,7 @@ addNeighbors2
   typename TImage::value_type newColor
 )
 {
-#if __cplusplus >= 201103L
 	std::unique_ptr<VoxelList> newVl(new VoxelList);
-#else
-	std::auto_ptr<VoxelList> newVl(new VoxelList);
-#endif
 	// A factor of 3 is usually more than enough
 	newVl->reserve(3 * vl.size());
 	VoxelList::const_iterator iVl;
@@ -327,11 +311,7 @@ addNeighbors2
 
 
 template < class TImage, class Ghost>
-#if __cplusplus >= 201103L
 std::unique_ptr<VoxelList>
-#else
-std::auto_ptr<VoxelList>
-#endif
 addSeeds
 (
   TImage &seg,
@@ -365,11 +345,7 @@ size_t regionGrowing2
 )
 {
 	// Initialize point list
-#if __cplusplus 201103L
 	std::unique_ptr<VoxelList> vl;
-#else
-	std::auto_ptr<VoxelList> vl;
-#endif
 
 	// Initialize the region growing
 	// NB: Not all seeds are necesarily taken into account
@@ -408,11 +384,7 @@ size_t regionGrowing
 )
 {
 	// Initialize point list
-#if __cplusplus >= 201103L
 	std::unique_ptr<VoxelList> vl;
-#else
-	std::auto_ptr<VoxelList> vl;
-#endif
 
 	// Initialize the region growing
 	// NB: Not all seeds are necesarily taken into account
