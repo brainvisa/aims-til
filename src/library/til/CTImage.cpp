@@ -28,15 +28,31 @@ TIL_API FILE *readCTImageHeader( char *filename, int *xs, int *ys, int *zs, int 
 
     /* Read first 6 bytes */
     fseek( fp, 0L, SEEK_SET );
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *zs = dummy[0] * 256 + dummy[1];
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *xs = dummy[0] * 256 + dummy[1];
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *ys = dummy[0] * 256 + dummy[1];
 
     /* Determine the type of the image 8 or 16 bit */
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     ctt = dummy[1];
 
     switch (ctt) {
@@ -99,15 +115,31 @@ TIL_API unsigned short *readCTImage16( char *filename, int *xs, int *ys, int *zs
 
     /* Read first 6 bytes */
     fseek( fp, 0L, SEEK_SET );
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *zs = dummy[0] * 256 + dummy[1];
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *xs = dummy[0] * 256 + dummy[1];
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *ys = dummy[0] * 256 + dummy[1];
 
     /* Test the type of the image */
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     if ( dummy[1] != 254 )
     {
         fprintf( stderr, "Unknown/wrong data type\n" );
@@ -240,15 +272,31 @@ TIL_API unsigned char *readCTImage8( char *filename, int *xs, int *ys, int *zs,
 
     /* Read first 6 bytes */
     fseek( fp, 0L, SEEK_SET );
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *zs = dummy[0] * 256 + dummy[1];
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *xs = dummy[0] * 256 + dummy[1];
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *ys = dummy[0] * 256 + dummy[1];
 
     /* Determine the type of the image 8 or 16 bit */
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     if ( dummy[1] != 255 )
     {
         fprintf( stderr, "Unknown/wrong data type\n" );
@@ -355,15 +403,31 @@ TIL_API unsigned int *readCTImage32( char *filename, int *xs, int *ys, int *zs,
 
     /* Read first 6 bytes */
     fseek( fp, 0L, SEEK_SET );
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *zs = dummy[0] * 256 + dummy[1];
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *xs = dummy[0] * 256 + dummy[1];
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *ys = dummy[0] * 256 + dummy[1];
 
     /* Test the type of the image */
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     if ( dummy[1] != 243 )
     {
         fprintf( stderr, "Unknown/wrong data type\n" );
@@ -470,15 +534,31 @@ TIL_API float *readCTImageFloat( char *filename, int *xs, int *ys, int *zs,
 
     /* Read first 6 bytes */
     fseek( fp, 0L, SEEK_SET );
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *zs = dummy[0] * 256 + dummy[1];
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *xs = dummy[0] * 256 + dummy[1];
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *ys = dummy[0] * 256 + dummy[1];
 
     /* Test the type of the image */
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     if ( dummy[1] != 242 )
     {
         fprintf( stderr, "Unknown/wrong data type\n" );
@@ -585,15 +665,31 @@ TIL_API double *readCTImageDouble( char *filename, int *xs, int *ys, int *zs,
 
     /* Read first 6 bytes */
     fseek( fp, 0L, SEEK_SET );
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *zs = dummy[0] * 256 + dummy[1];
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *xs = dummy[0] * 256 + dummy[1];
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *ys = dummy[0] * 256 + dummy[1];
 
     /* Test the type of the image */
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     if ( dummy[1] != 241 )
     {
         fprintf( stderr, "Unknown/wrong data type\n" );
