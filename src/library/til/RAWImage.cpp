@@ -70,6 +70,11 @@ unsigned short *readRawImage16( char *filename, int xs, int ys,
 
     fclose( fp );
 
+    if ( numgot != ( xs *ys ) )
+    {
+        fprintf( stderr, "Warning: unexpected number of elements read\n" );
+    }
+
     return( imgPtr );
 }
 
@@ -116,6 +121,11 @@ unsigned short *readRawImage16ByNumber( FILE *fp, int slice, int xs, int ys,
 	{
 		numgot = fread( (char *)imgPtr, sizeof(short), xs *ys, fp );
 	}
+
+    if ( numgot != ( xs *ys ) )
+    {
+        fprintf( stderr, "Warning: unexpected number of elements read\n" );
+    }
 
     return( imgPtr );
 }
@@ -225,6 +235,11 @@ unsigned char *readRawImage8( char *filename, int xs, int ys, int zs )
     numgot = fread( (char *)imgPtr, sizeof(char), xs *ys *zs, fp );
     fclose( fp );
 
+    if ( numgot != ( xs *ys ) )
+    {
+        fprintf( stderr, "Warning: unexpected number of elements read\n" );
+    }
+
     return( imgPtr );
 }
 
@@ -253,6 +268,11 @@ unsigned char *readRawImage8ByNumber( FILE *fp, int slice, int xs, int ys )
     /* Read image data */
     numgot = fread( (char *)imgPtr, sizeof(char), xs * ys, fp );
 
+    if ( numgot != ( xs *ys ) )
+    {
+        fprintf( stderr, "Warning: unexpected number of elements read\n" );
+    }
+
     return( imgPtr );
 }
 
@@ -272,6 +292,11 @@ unsigned char *readRawImage8Sequentially( FILE *fp, int xs, int ys )
     /* Read image data */
     /* Wrong byte order: Swap low and high bytes */
     numgot = fread( (char *)imgPtr, sizeof(char), xs * ys, fp );
+
+    if ( numgot != ( xs *ys ) )
+    {
+        fprintf( stderr, "Warning: unexpected number of elements read\n" );
+    }
 
     return( imgPtr );
 }

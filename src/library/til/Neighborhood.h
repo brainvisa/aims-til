@@ -153,6 +153,7 @@ public: // set & get
 
 	void set(const numeric_array<int,3> &v)
 	{
+		(void)(v);
 		// Check that input vector verifies basic assumptions
     assert(all_less_equal(v, numeric_array<int,3>(1,1,1)));
 		assert(all_greater_equal(v, numeric_array<int,3>(-1,-1,-1)));
@@ -161,6 +162,7 @@ public: // set & get
 	}
 	void reset(const numeric_array<int,3> &v)
 	{
+		(void)(v);
 		// Check that input vector verifies basic assumptions
 		assert(all_less_equal(v, numeric_array<int,3>(1,1,1)));
 		assert(all_greater_equal(v, numeric_array<int,3>(-1,-1,-1)));
