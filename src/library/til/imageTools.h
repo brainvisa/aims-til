@@ -597,7 +597,7 @@ void rand
   typename TImage::value_type max
 )
 {
-	typedef typename TImage::value_type value_type;
+	//typedef typename TImage::value_type value_type;
 	
 	// Checking whether max < min
 	if (max < min)

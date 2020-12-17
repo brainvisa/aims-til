@@ -1,6 +1,7 @@
 #ifndef TIL_REGIONGROWING_H
 #define TIL_REGIONGROWING_H
 
+#include <cartobase/config/cartobase_config.h>
 
 // Includes from TIL library
 #include "til/til_common.h"
@@ -199,14 +200,14 @@ INLINE void _addPoint2
 // of some policy.
 
 template < class TImage, class Ghost >
-std::auto_ptr<VoxelList>                                      ///< New boundary points
+std::unique_ptr<VoxelList>                                    ///< New boundary points
 addNeighbors(TImage &seg,                                     ///< Segmentation image
              const std::vector<numeric_array<int,3> > &vl,    ///< Boundary points
              const std::vector<numeric_array<int,3> > &vnh,   ///< Neighborhood
              Ghost &ghost,                                    ///< Region growing criteria
              typename TImage::value_type newColor)            ///< New color
 {
-	std::auto_ptr<VoxelList> newVl(new VoxelList);
+	std::unique_ptr<VoxelList> newVl(new VoxelList);
 	// A factor of 3 is usually more than enough
 	newVl->reserve(3 * vl.size());
 	VoxelList::const_iterator iVl;
@@ -246,7 +247,7 @@ if (nh.template isNeighbor<(i),(j),(k)>() && containsNeighbor<(i),(j),(k)>(iSeg)
 
 
 template < class TImage, class Ghost, class TNeighborhood >
-std::auto_ptr<VoxelList>
+std::unique_ptr<VoxelList>
 addNeighbors2
 (
   TImage & seg,
@@ -256,7 +257,7 @@ addNeighbors2
   typename TImage::value_type newColor
 )
 {
-	std::auto_ptr<VoxelList> newVl(new VoxelList);
+	std::unique_ptr<VoxelList> newVl(new VoxelList);
 	// A factor of 3 is usually more than enough
 	newVl->reserve(3 * vl.size());
 	VoxelList::const_iterator iVl;
@@ -310,7 +311,7 @@ addNeighbors2
 
 
 template < class TImage, class Ghost>
-std::auto_ptr<VoxelList>
+std::unique_ptr<VoxelList>
 addSeeds
 (
   TImage &seg,
@@ -319,7 +320,7 @@ addSeeds
   typename TImage::value_type newColor
 )
 {
-	std::auto_ptr<VoxelList> newVl(new VoxelList);
+	catro::unique_ptr<VoxelList> newVl(new VoxelList);
 	VoxelList::const_iterator iVl;
 
 	for (iVl = vl.begin(); iVl != vl.end(); ++iVl)
@@ -344,8 +345,7 @@ size_t regionGrowing2
 )
 {
 	// Initialize point list
-	std::auto_ptr<VoxelList> vl;
-
+	std::unique_ptr<VoxelList> vl;
 
 	// Initialize the region growing
 	// NB: Not all seeds are necesarily taken into account
@@ -384,7 +384,7 @@ size_t regionGrowing
 )
 {
 	// Initialize point list
-	std::auto_ptr<VoxelList> vl;
+	std::unique_ptr<VoxelList> vl;
 
 	// Initialize the region growing
 	// NB: Not all seeds are necesarily taken into account

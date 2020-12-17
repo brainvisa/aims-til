@@ -28,15 +28,31 @@ TIL_API FILE *readCTImageHeader( char *filename, int *xs, int *ys, int *zs, int 
 
     /* Read first 6 bytes */
     fseek( fp, 0L, SEEK_SET );
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *zs = dummy[0] * 256 + dummy[1];
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *xs = dummy[0] * 256 + dummy[1];
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *ys = dummy[0] * 256 + dummy[1];
 
     /* Determine the type of the image 8 or 16 bit */
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     ctt = dummy[1];
 
     switch (ctt) {
@@ -99,15 +115,31 @@ TIL_API unsigned short *readCTImage16( char *filename, int *xs, int *ys, int *zs
 
     /* Read first 6 bytes */
     fseek( fp, 0L, SEEK_SET );
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *zs = dummy[0] * 256 + dummy[1];
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *xs = dummy[0] * 256 + dummy[1];
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *ys = dummy[0] * 256 + dummy[1];
 
     /* Test the type of the image */
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     if ( dummy[1] != 254 )
     {
         fprintf( stderr, "Unknown/wrong data type\n" );
@@ -159,7 +191,7 @@ TIL_API unsigned short *readCTImage16ByNumber( FILE *fp, int slice, int xs, int 
 {
     unsigned short *imgPtr;
     unsigned char *iPtr, *s;
-    int numgot;
+    int numgot, N = xs * ys;
 
     if ( slice < 0 )
     {
@@ -168,9 +200,9 @@ TIL_API unsigned short *readCTImage16ByNumber( FILE *fp, int slice, int xs, int 
     }
 
     fseek( fp, 0L, SEEK_SET );
-    fseek( fp, (long)slice * xs * ys * sizeof(short) + 8L, SEEK_SET );
+    fseek( fp, (long)slice * N * sizeof(short) + 8L, SEEK_SET );
 
-    imgPtr = (unsigned short *)malloc( xs * ys * sizeof(short) + 1 );
+    imgPtr = (unsigned short *)malloc( N * sizeof(short) + 1 );
 
     if ( !imgPtr )
     {
@@ -180,14 +212,17 @@ TIL_API unsigned short *readCTImage16ByNumber( FILE *fp, int slice, int xs, int 
 
     /* Read image data */
     /* Wrong byte order: Swap low and high bytes */
-    numgot = fread( (char *)imgPtr + 1, sizeof(short), xs * ys, fp );
+    numgot = fread( (char *)imgPtr + 1, sizeof(short), N, fp );
 
-    iPtr = (unsigned char *)imgPtr;
-    s = (unsigned char *)imgPtr + 2 * xs * ys;
-    while ( iPtr < s )
+    if ( numgot == N)
     {
+      iPtr = (unsigned char *)imgPtr;
+      s = (unsigned char *)imgPtr + 2 * N;
+      while ( iPtr < s )
+      {
         *iPtr = *( iPtr + 2 );
         iPtr += 2;
+      }
     }
 
     return( imgPtr );
@@ -197,9 +232,9 @@ TIL_API unsigned short *readCTImage16Sequentially( FILE *fp, int xs, int ys )
 {
     unsigned short *imgPtr;
     unsigned char *iPtr, *s;
-    int numgot;
+    int numgot, N = xs * ys;
 
-    imgPtr = (unsigned short *)malloc( xs * ys * sizeof(short) + 1 );
+    imgPtr = (unsigned short *)malloc( N * sizeof(short) + 1 );
 
     if ( !imgPtr )
     {
@@ -209,14 +244,17 @@ TIL_API unsigned short *readCTImage16Sequentially( FILE *fp, int xs, int ys )
 
     /* Read image data */
     /* Wrong byte order: Swap low and high bytes */
-    numgot = fread( (char *)imgPtr + 1, sizeof(short), xs * ys, fp );
+    numgot = fread( (char *)imgPtr + 1, sizeof(short), N, fp );
 
-    iPtr = (unsigned char *)imgPtr;
-    s = (unsigned char *)imgPtr + 2 * xs * ys;
-    while ( iPtr < s )
+    if ( numgot == N )
     {
+      iPtr = (unsigned char *)imgPtr;
+      s = (unsigned char *)imgPtr + 2 * N;
+      while ( iPtr < s )
+      {
         *iPtr = *( iPtr + 2 );
         iPtr += 2;
+      }
     }
 
     return( imgPtr );
@@ -240,15 +278,31 @@ TIL_API unsigned char *readCTImage8( char *filename, int *xs, int *ys, int *zs,
 
     /* Read first 6 bytes */
     fseek( fp, 0L, SEEK_SET );
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *zs = dummy[0] * 256 + dummy[1];
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *xs = dummy[0] * 256 + dummy[1];
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *ys = dummy[0] * 256 + dummy[1];
 
     /* Determine the type of the image 8 or 16 bit */
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     if ( dummy[1] != 255 )
     {
         fprintf( stderr, "Unknown/wrong data type\n" );
@@ -314,6 +368,11 @@ TIL_API unsigned char *readCTImage8ByNumber( FILE *fp, int slice, int xs, int ys
     /* Wrong byte order: Swap low and high bytes */
     numgot = fread( (char *)imgPtr, sizeof(char), xs * ys, fp );
 
+    if ( numgot != ( xs *ys ) )
+    {
+        fprintf( stderr, "Warning: unexpected number of elements read\n" );
+    }
+
     return( imgPtr );
 }
 
@@ -333,6 +392,11 @@ TIL_API unsigned char *readCTImage8Sequentially( FILE *fp, int xs, int ys )
     /* Read image data */
     /* Wrong byte order: Swap low and high bytes */
     numgot = fread( (char *)imgPtr, sizeof(char), xs * ys, fp );
+
+    if ( numgot != ( xs *ys ) )
+    {
+        fprintf( stderr, "Warning: unexpected number of elements read\n" );
+    }
 
     return( imgPtr );
 }
@@ -355,15 +419,31 @@ TIL_API unsigned int *readCTImage32( char *filename, int *xs, int *ys, int *zs,
 
     /* Read first 6 bytes */
     fseek( fp, 0L, SEEK_SET );
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *zs = dummy[0] * 256 + dummy[1];
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *xs = dummy[0] * 256 + dummy[1];
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *ys = dummy[0] * 256 + dummy[1];
 
     /* Test the type of the image */
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     if ( dummy[1] != 243 )
     {
         fprintf( stderr, "Unknown/wrong data type\n" );
@@ -429,6 +509,11 @@ TIL_API unsigned int *readCTImage32ByNumber( FILE *fp, int slice, int xs, int ys
     /* Read image data */
     numgot = fread( (void *)imgPtr, sizeof(int), xs * ys, fp );
 
+    if ( numgot != ( xs *ys ) )
+    {
+        fprintf( stderr, "Warning: unexpected number of elements read\n" );
+    }
+
     return( imgPtr );
 }
 
@@ -447,6 +532,11 @@ TIL_API unsigned int *readCTImage32Sequentially( FILE *fp, int xs, int ys )
 
     /* Read image data */
     numgot = fread( (void *)imgPtr, sizeof(int), xs * ys, fp );
+
+    if ( numgot != ( xs *ys ) )
+    {
+        fprintf( stderr, "Warning: unexpected number of elements read\n" );
+    }
 
     return( imgPtr );
 }
@@ -470,15 +560,31 @@ TIL_API float *readCTImageFloat( char *filename, int *xs, int *ys, int *zs,
 
     /* Read first 6 bytes */
     fseek( fp, 0L, SEEK_SET );
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *zs = dummy[0] * 256 + dummy[1];
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *xs = dummy[0] * 256 + dummy[1];
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *ys = dummy[0] * 256 + dummy[1];
 
     /* Test the type of the image */
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     if ( dummy[1] != 242 )
     {
         fprintf( stderr, "Unknown/wrong data type\n" );
@@ -545,6 +651,11 @@ TIL_API float *readCTImageFloatByNumber( FILE *fp, int slice, int xs, int ys )
     /* Read image data */
     numgot = fread( (void *)imgPtr, sizeof(float), xs * ys, fp );
 
+    if ( numgot != ( xs *ys ) )
+    {
+        fprintf( stderr, "Warning: unexpected number of elements read\n" );
+    }
+
     return( imgPtr );
 }
 
@@ -563,6 +674,11 @@ TIL_API float *readCTImageFloatSequentially( FILE *fp, int xs, int ys )
 
     /* Read image data */
     numgot = fread( (void *)imgPtr, sizeof(float), xs * ys, fp );
+
+    if ( numgot != ( xs *ys ) )
+    {
+        fprintf( stderr, "Warning: unexpected number of elements read\n" );
+    }
 
     return( imgPtr );
 }
@@ -585,15 +701,31 @@ TIL_API double *readCTImageDouble( char *filename, int *xs, int *ys, int *zs,
 
     /* Read first 6 bytes */
     fseek( fp, 0L, SEEK_SET );
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *zs = dummy[0] * 256 + dummy[1];
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *xs = dummy[0] * 256 + dummy[1];
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     *ys = dummy[0] * 256 + dummy[1];
 
     /* Test the type of the image */
-    fread( &dummy, 2, 1, fp );
+    if ( fread( &dummy, 2, 1, fp ) != 1 )
+    {
+        fprintf( stderr, "File %s is corrupted\n", filename );
+        exit( 0 );
+    }
     if ( dummy[1] != 241 )
     {
         fprintf( stderr, "Unknown/wrong data type\n" );
@@ -662,6 +794,11 @@ TIL_API double *readCTImageDoubleByNumber( FILE *fp, int slice, int xs, int ys )
     /* Read image data */
     numgot = fread( (void *)imgPtr, sizeof(double), xs * ys, fp );
 
+    if ( numgot != ( xs *ys ) )
+    {
+        fprintf( stderr, "Warning: unexpected number of elements read\n" );
+    }
+
     return( imgPtr );
 }
 
@@ -681,11 +818,16 @@ TIL_API double *readCTImageDoubleSequentially( FILE *fp, int xs, int ys )
     /* Read image data */
     numgot = fread( (void *)imgPtr, sizeof(double), xs * ys, fp );
 
+    if ( numgot != ( xs *ys ) )
+    {
+        fprintf( stderr, "Warning: unexpected number of elements read\n" );
+    }
+
     return( imgPtr );
 }
 
 
-TIL_API FILE *writeCTImageDoubleHeader( char *filename, double * dPtr, int xs, int ys, int zs )
+TIL_API FILE *writeCTImageDoubleHeader( char *filename, double * /* dPtr */, int xs, int ys, int zs )
 {
     FILE *fp;
     unsigned char dummy[2];
@@ -760,7 +902,7 @@ TIL_API int writeCTImageDoubleSequentially( FILE *fp, double *dPtr, int xs, int 
 }
 
 
-TIL_API FILE *writeCTImageFloatHeader( char *filename, float *fPtr, int xs, int ys, int zs )
+TIL_API FILE *writeCTImageFloatHeader( char *filename, float * /* fPtr */, int xs, int ys, int zs )
 {
     FILE *fp;
     unsigned char dummy[2];
@@ -837,7 +979,7 @@ TIL_API int writeCTImageFloat( char *filename, float *fPtr, int xs, int ys, int 
 }
 
 
-TIL_API FILE *writeCTImage32Header( char *filename, unsigned int *iPtr, int xs, int ys, int zs )
+TIL_API FILE *writeCTImage32Header( char *filename, unsigned int * /* iPtr */, int xs, int ys, int zs )
 {
     FILE *fp;
     unsigned char dummy[2];
@@ -981,7 +1123,7 @@ TIL_API int writeCTImage16Sequentially( FILE *fp, unsigned short *sPtr, int xs, 
     return( rv==sizeof(short) );
 }
 
-TIL_API FILE *writeCTImage16Header( char *filename, unsigned short *sPtr, int xs, int ys, int zs )
+TIL_API FILE *writeCTImage16Header( char *filename, unsigned short * /* sPtr */, int xs, int ys, int zs )
 {
     FILE *fp;
     unsigned char dummy[2];
@@ -1010,7 +1152,7 @@ TIL_API FILE *writeCTImage16Header( char *filename, unsigned short *sPtr, int xs
     return( fp );
 }
 
-TIL_API FILE *writeCTImage8Header( char *filename, unsigned char *sPtr, int xs, int ys, int zs )
+TIL_API FILE *writeCTImage8Header( char *filename, unsigned char * /* sPtr */, int xs, int ys, int zs )
 {
     FILE *fp;
     unsigned char dummy[2];

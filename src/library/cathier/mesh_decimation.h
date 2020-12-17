@@ -1331,10 +1331,10 @@ namespace til
             }
             // add face to graph
             typename std::list<TFaceNode>::iterator gf = m_graph_faces.insert(m_graph_faces.end(), f);
-            numeric_array<float,3> normal = cross(
+            /*numeric_array<float,3> normal = cross(
               i->faces().front()->face[0]->pos() - i->faces().front()->face[1]->pos(),
               i->faces().front()->face[0]->pos() - i->faces().front()->face[2]->pos()
-            );
+            );*/
             // add face index to face points
             for (std::size_t n = 0; n < 3; ++n)
             {
