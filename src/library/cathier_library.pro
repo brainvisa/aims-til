@@ -192,7 +192,6 @@ HEADERS = \
    cathier/SparseVector.h \
    cathier/stditerator.h \
    cathier/std_wrap.h \
-   cathier/totodebug.h \
    cathier/triangle_mesh_geodesic_map.h \
    cathier/binary_tree.tpp \
    cathier/dwt.tpp \
@@ -212,8 +211,7 @@ HEADERS = \
    cathier/misc_utils.tpp \
    cathier/poly_solver.tpp \
    cathier/progress_indicator.tpp \
-   cathier/triangle_mesh_geodesic_map.tpp \
-   cathier/toto.h
+   cathier/triangle_mesh_geodesic_map.tpp
 
 SOURCES =                     \
    til/CTImage.cpp           \
