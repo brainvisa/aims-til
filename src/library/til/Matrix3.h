@@ -5,7 +5,6 @@
 #include "boost/array.hpp"
 
 // includes from TIL library
-#include "til/ghost_array.h"
 #include "til/til_common.h"
 #include "til/multi_array.h"
 #include "til/numeric_array.h"

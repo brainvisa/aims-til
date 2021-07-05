@@ -71,13 +71,11 @@ HEADERS = \
    cathier/index_collection.h \
    cathier/cyclic_iterator.h \
 # unused ?
-   til/Accumulator.h \
    til/basicFunctors.h \
    til/basic_iterator.h \
    til/basic_range.h \
    til/boost_wrap.h \
    til/functors.h \
-   til/ghost_array.h \
    til/meta.h \
    til/misc_scalar_functions.h \
    til/multi_array.h \

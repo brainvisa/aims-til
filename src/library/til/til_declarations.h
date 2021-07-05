@@ -21,8 +21,6 @@ namespace til
 	template < typename T >					           class ImageNC;
 	template < typename T >                    class ImageRLE;
 	template < typename T >                    class Matrix3;
-  template < typename T, typename TAccumulation >
-                                             class MeanAccumulator;
 	template < typename TParam >               class Mesh;
   template < class TMesh >                   struct MeshAttributes;
   template < typename TParam >               class MeshFaceCollection;
