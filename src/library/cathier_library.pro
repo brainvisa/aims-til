@@ -94,13 +94,10 @@ HEADERS = \
    til/std_wrap.h \
    til/stl_declarations.h \
    til/til_declarations.h \
-   til/til.h \
    til/til_math.h \
    til/traits.h \
    til/value_proxy.h \
    til/value_proxy_policies.h \
-   cathier/accessors.h \
-   cathier/convert.h \
    cathier/cyclic_iterator.h \
    cathier/func_iterator.h
 
