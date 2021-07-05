@@ -5,6 +5,7 @@
 
 // includes from TIL
 #include "til/numeric_array.h"
+#include "til/Matrix3.h"
 
 // includes from TIL
 #include "fuzzy_logic.h"

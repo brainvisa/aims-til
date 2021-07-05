@@ -17,7 +17,6 @@
 
 // includes from TIL
 #include "til/is_traits.h"
-#include "til/Matrix3.h"
 #include "til/TExpr.h"
 #include "til/TExprOperators.h"
 

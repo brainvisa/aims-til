@@ -7,16 +7,28 @@ INCBDIR =
 
 HEADERS = \
 # required for meshCleaner
+   til/til_common.h \
    til/numeric_array.h \
    til/numeric_array_operators.h \
    til/numeric_array_tools.h \
    til/numeric_array.tpp \
    til/ext_declarations.h \
+   til/labels.h \
+   til/TExpr.h \
+   til/TExprBasicFunctors.h \
+   til/TExprConcatenation.h \
+   til/TExprMacros.h \
+   til/TExprPlaceHolders.h \
+   til/TExprOperators.h \
+   til/TExprFunctions.h \
    cathier/aims_wrap.h \
    cathier/misc_utils.tpp \
    cathier/misc_sort.h \
    cathier/misc_sort.tpp \
    cathier/mesh_decimation.h \
+   cathier/globalTraits.h \
+   til/Matrix3.h \
+   til/matrix3Tools.h \
 # required for constellation
    til/sparse_vector.h \
    til/sparse_vector_operators.h \
@@ -43,21 +55,15 @@ HEADERS = \
    til/Accumulator.h \
    til/basicFunctors.h \
    til/basic_iterator.h \
-   til/BasicPixelActions.h \
    til/basic_range.h \
    til/boost_wrap.h \
    til/cat2type.h \
-   til/ConditionalIterator.h \
    til/functors.h \
    til/ghost_array.h \
    til/if_then_else.h \
    til/is_traits.h \
    til/KeysInterpolation.h \
-   til/labelClasses.h \
-   til/labels.h \
    til/loop.h \
-   til/Matrix3.h \
-   til/matrix3Tools.h \
    til/meta.h \
    til/misc_scalar_functions.h \
    til/miscTools.h \
@@ -75,19 +81,7 @@ HEADERS = \
    til/stditerator.h \
    til/std_wrap.h \
    til/stl_declarations.h \
-   til/StructureTensor.h \
-   til/SymMatrix3.h \
-   til/symmatrix3tools.h \
    til/templateTools.h \
-   til/TensorProductInterpolation.h \
-   til/TExprBasicFunctors.h \
-   til/TExprConcatenation.h \
-   til/TExprFunctions.h \
-   til/TExpr.h \
-   til/TExprMacros.h \
-   til/TExprOperators.h \
-   til/TExprPlaceHolders.h \
-   til/til_common.h \
    til/til_declarations.h \
    til/til.h \
    til/til_math.h \
@@ -102,7 +96,6 @@ HEADERS = \
    cathier/cyclic_iterator.h \
    cathier/func_iterator.h \
    cathier/geometrics.h \
-   cathier/globalTraits.h \
    cathier/index_collection.h \
    cathier/mesh_conversion.h \
    cathier/Mesh.h \
@@ -116,8 +109,7 @@ HEADERS = \
    cathier/std_wrap.h \
    cathier/binary_tree.tpp \
    cathier/mesh_conversion.tpp \
-   cathier/mesh_utils.tpp \
-   cathier/mics_tools.tpp
+   cathier/mesh_utils.tpp
 
 SOURCES = \
    cathier/aims_wrap.cpp
