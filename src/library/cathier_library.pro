@@ -37,6 +37,8 @@ HEADERS = \
    til/multi_array.h \
    til/stditerator.h \
    til/std_wrap.h \
+   til/traits.h \
+   til/til_declarations.h \
    cathier/aims_wrap.h \
    cathier/misc_utils.tpp \
    cathier/misc_sort.h \
@@ -56,6 +58,8 @@ HEADERS = \
    til/sparse_vector_operators.h \
    til/sparse_vector_policies.h \
    til/sparse_vector_tools.h \
+   til/value_proxy.h \
+   til/value_proxy_policies.h \
    cathier/poly_solver.h \
    cathier/poly_solver_policies.h \
    cathier/poly_solver.tpp \
@@ -77,12 +81,7 @@ HEADERS = \
    cathier/binary_tree.h \
    cathier/binary_tree.tpp \
    cathier/index_collection.h \
-   cathier/cyclic_iterator.h \
-# unused ?
-   til/til_declarations.h \
-   til/traits.h \
-   til/value_proxy.h \
-   til/value_proxy_policies.h
+   cathier/cyclic_iterator.h
 
 SOURCES = \
    cathier/aims_wrap.cpp
