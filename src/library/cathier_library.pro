@@ -69,6 +69,7 @@ HEADERS = \
    cathier/binary_tree.h \
    cathier/binary_tree.tpp \
    cathier/index_collection.h \
+   cathier/cyclic_iterator.h \
 # unused ?
    til/Accumulator.h \
    til/basicFunctors.h \
@@ -83,13 +84,9 @@ HEADERS = \
    til/NeighborhoodConfigurations.h \
    til/Neighborhood.h \
    til/neighborhoodTools.h \
-   til/PointList.h \
-   til/pointListTools.h \
    til/point_operators.h \
    til/point_tools.h \
-   til/Ptr.h \
    til/range_tools.h \
-   til/SmartObject.h \
    til/stditerator.h \
    til/std_wrap.h \
    til/stl_declarations.h \
@@ -97,9 +94,7 @@ HEADERS = \
    til/til_math.h \
    til/traits.h \
    til/value_proxy.h \
-   til/value_proxy_policies.h \
-   cathier/cyclic_iterator.h \
-   cathier/func_iterator.h
+   til/value_proxy_policies.h
 
 SOURCES = \
    cathier/aims_wrap.cpp
