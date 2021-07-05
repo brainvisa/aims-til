@@ -29,6 +29,14 @@ HEADERS = \
    til/is_traits.h \
    til/cat2type.h \
    til/loop.h \
+   til/basic_iterator.h \
+   til/basic_range.h \
+   til/functors.h \
+   til/misc_scalar_functions.h \
+   til/meta.h \
+   til/multi_array.h \
+   til/stditerator.h \
+   til/std_wrap.h \
    cathier/aims_wrap.h \
    cathier/misc_utils.tpp \
    cathier/misc_sort.h \
@@ -71,25 +79,7 @@ HEADERS = \
    cathier/index_collection.h \
    cathier/cyclic_iterator.h \
 # unused ?
-   til/basicFunctors.h \
-   til/basic_iterator.h \
-   til/basic_range.h \
-   til/boost_wrap.h \
-   til/functors.h \
-   til/meta.h \
-   til/misc_scalar_functions.h \
-   til/multi_array.h \
-   til/NeighborhoodConfigurations.h \
-   til/Neighborhood.h \
-   til/neighborhoodTools.h \
-   til/point_operators.h \
-   til/point_tools.h \
-   til/range_tools.h \
-   til/stditerator.h \
-   til/std_wrap.h \
-   til/stl_declarations.h \
    til/til_declarations.h \
-   til/til_math.h \
    til/traits.h \
    til/value_proxy.h \
    til/value_proxy_policies.h
