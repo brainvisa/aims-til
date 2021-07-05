@@ -1,3 +1,4 @@
+#if 0
 
 // includes from STL
 #include <algorithm>
@@ -130,3 +131,5 @@ namespace til
     return edges;
   }
 }
+
+#endif
