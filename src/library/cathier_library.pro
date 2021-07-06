@@ -65,8 +65,6 @@ HEADERS = \
    cathier/poly_solver.tpp \
    cathier/geometrics.h \
    cathier/geometrics.tpp \
-   cathier/kdtree.h \
-   cathier/kdtree.tpp \
    cathier/triangle_mesh_geodesic_map.h \
    cathier/triangle_mesh_geodesic_map.tpp \
    cathier/fuzzy_logic.h \
