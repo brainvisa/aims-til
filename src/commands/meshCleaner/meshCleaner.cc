@@ -16,12 +16,15 @@ void removingPointsWithHighCurvature(int argc, char * argv[])
   til::Mesh_N mesh;
   std::cout << "Reading mesh..." << std::flush;
   Writer<AimsSurfaceTriangle> w;
+  cerr << "WARNING THIS COMMAND IS OBSOLETE. Please use AimsMeshCleaner instead." << endl;
   float maxCurv;
   {
+    bool do_work = false;
     Reader<AimsSurfaceTriangle> r;
     AimsApplication app( argc, aims_const_hack(argv), "removingPointsWithHighCurvature");
     app.addOption(r, "-i", "input mesh" );
     app.addOption(w, "-o", "output mesh" );
+    app.addOption(do_work, "--work", "really do something instead of just printing a deprecation warning." );
     app.addOption(maxCurv, "-maxCurv", "maximum unoriented Gaussian curvature allowed in the mesh");
     app.initialize();
 
