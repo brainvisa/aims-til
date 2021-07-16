@@ -247,6 +247,7 @@ namespace til
   };
   */
   
+  inline
   std::list<boost::array<std::size_t,3> >
   simple_delaunay_triangulation(std::vector<numeric_array<float, 2> > points)
   {
